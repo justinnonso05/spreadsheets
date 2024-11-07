@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-t-h#@%e^3al+y=hfd2r@hbz2af^z6!n@fo3u=u*8a^8009fc%$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://spreadsheets-mail-sender.onrender.com"]
 
 # Application definition
 
