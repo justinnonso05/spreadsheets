@@ -85,10 +85,10 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'ifepolitika@gmail.com'
-EMAIL_HOST_PASSWORD = 'ecbh jnhz qthn zhja'
+EMAIL_HOST_USER = 'justondev05@gmail.com'
+EMAIL_HOST_PASSWORD = 'ncgr tgkm wpjb jsal'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Lumen Blog <Ifepolitika>'
+DEFAULT_FROM_EMAIL = '24/25 NUASA OOU ELECTION VOTING LINK'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

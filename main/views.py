@@ -3,6 +3,9 @@ import plotly.express as px
 import plotly.io as pio
 import pandas as pd
 from .forms import FileUploadForm
+from django.core.mail import send_mail
+from django.conf import settings
+import os
 
 def graphs(request):
     # Sample data for the graph
@@ -16,12 +19,6 @@ def graphs(request):
 
     return render(request, 'main/index.html', {'plot_div': plot_div})
 
-from django.shortcuts import render, redirect
-import plotly.express as px
-import plotly.io as pio
-import pandas as pd
-from .forms import FileUploadForm
-import os
 
 def dataView(request):
     form = FileUploadForm()
@@ -72,10 +69,7 @@ def dataView(request):
     return render(request, 'main/upload.html', context)
 
 
-from django.core.mail import send_mail
-from django.conf import settings
-import pandas as pd
-import os
+
 
 def sendEmails(request):
     file_path = request.session.get('file_path')
@@ -85,7 +79,7 @@ def sendEmails(request):
         return render(request, 'main/email_error.html', {'error': 'File not found or session expired.'})
 
     try:
-        # Load the data and find the 'email' column
+        # Load the data
         if file_path.endswith('.csv'):
             data = pd.read_csv(file_path)
         elif file_path.endswith('.xls') or file_path.endswith('.xlsx'):
@@ -93,16 +87,33 @@ def sendEmails(request):
         else:
             return render(request, 'main/email_error.html', {'error': 'Unsupported file format.'})
 
-        if 'Emails' not in data.columns:
-            return render(request, 'main/email_error.html', {'error': 'No "email" column found in the file.'})
+        # Check for required columns
+        if 'Emails' not in data.columns or len(data.columns) < 2:
+            return render(request, 'main/email_error.html', {'error': 'File must contain "Emails" and a voting code column.'})
 
-        # Retrieve email addresses and send emails
+        # Retrieve email addresses and corresponding voting codes
         email_addresses = data['Emails'].dropna().unique()
-        subject = "Your Subject Here"
-        message = "Your email body here"
+        voting_codes = data.iloc[:, 1]  # Assuming the next column after 'Emails' contains the voting codes
+
+        # Send each email with its corresponding voting code
+        subject = "Your Voting Code"
         from_email = settings.DEFAULT_FROM_EMAIL
 
-        for email in email_addresses:
+        for email, voting_code in zip(email_addresses, voting_codes):
+            message = f'''Hello {email},
+
+Here is your unique code for voting: {voting_code}. Please use this code in the form to verify your identity.
+
+Voting Details: The voting period will be open from 8:00 AM to 12:00 PM. You have a total of 4 hours to cast your vote. Please ensure you complete your voting within this time frame.
+
+Important: Please do not share this verification code with anyone. It is unique to you and can only be used once for verification.
+
+To proceed with voting, click here to vote.
+
+Thank you for participating!
+
+Best wishes,
+NUASA'''
             try:
                 send_mail(subject, message, from_email, [email])
                 emails_sent.append(email)
