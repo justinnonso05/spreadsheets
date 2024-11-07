@@ -28,7 +28,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://spreadsheets-mail-sender.onrender.com"]
 
-# Application definition
+# Application definition.
 
 INSTALLED_APPS = [
     'main.apps.MainConfig',
