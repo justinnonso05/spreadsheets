@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .header h1 {
+            color: #007bff;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NUASA Voting</h1>
+        </div>
+        <div class="content">
+            <p>Hello {{ email }},</p>
+            <p>Here is your unique code for voting: <strong>{{ voting_code }}</strong>.</p>
+            <p>Please use this code in the form to verify your identity.</p>
+            <h3>Voting Details:</h3>
+            <p>The voting period will be open from <strong>8:00 AM</strong> to <strong>12:00 PM</strong>. You have a total of 4 hours to cast your vote. Please ensure you complete your voting within this time frame.</p>
+            <p><strong>Important:</strong> Please do not share this verification code with anyone. It is unique to you and can only be used once for verification.</p>
+            <a href="#" class="button">Click here to vote</a>
+        </div>
+        <div class="footer">
+            <p>Thank you for participating!</p>
+            <p>Best wishes, NUASA</p>
+        </div>
+    </div>
+</body>
+</html>

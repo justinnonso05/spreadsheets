@@ -6,6 +6,8 @@ from .forms import FileUploadForm
 from django.core.mail import send_mail
 from django.conf import settings
 import os
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 def graphs(request):
     # Sample data for the graph
@@ -69,8 +71,6 @@ def dataView(request):
     return render(request, 'main/upload.html', context)
 
 
-
-
 def sendEmails(request):
     file_path = request.session.get('file_path')
     emails_sent = []
@@ -100,22 +100,17 @@ def sendEmails(request):
         from_email = settings.DEFAULT_FROM_EMAIL
 
         for email, voting_code in zip(email_addresses, voting_codes):
-            message = f'''Hello {email},
-
-Here is your unique code for voting: {voting_code}. Please use this code in the form to verify your identity.
-
-Voting Details: The voting period will be open from 8:00 AM to 12:00 PM. You have a total of 4 hours to cast your vote. Please ensure you complete your voting within this time frame.
-
-Important: Please do not share this verification code with anyone. It is unique to you and can only be used once for verification.
-
-To proceed with voting, click here to vote.
-
-Thank you for participating!
-
-Best wishes,
-NUASA'''
+            # Render the HTML email template with context
+            html_content = render_to_string('main/email_content.html', {
+                'email': email,
+                'voting_code': voting_code
+            })
+            # Create the email message
+            email_message = EmailMultiAlternatives(subject, '', from_email, [email])
+            email_message.attach_alternative(html_content, "text/html")
+            
             try:
-                send_mail(subject, message, from_email, [email])
+                email_message.send()
                 emails_sent.append(email)
             except Exception as e:
                 print(f'Error sending email to {email}: {e}')  # Log error for debugging
