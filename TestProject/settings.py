@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t-h#@%e^3al+y=hfd2r@hbz2af^z6!n@fo3u=u*8a^8009fc%$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://spreadsheets-mail-sender.onrender.com"]
@@ -82,13 +82,13 @@ DATABASES = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'justondev05@gmail.com'
 EMAIL_HOST_PASSWORD = 'ncgr tgkm wpjb jsal'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = '24/25 NUASA OOU ELECTION VOTING LINK'
+DEFAULT_FROM_EMAIL = 'NACOS Mock ELection'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -124,7 +124,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR/'staticfiles'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

@@ -8,6 +8,7 @@ from django.conf import settings
 import os
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+import time  # Import the time module for sleep function
 
 def graphs(request):
     # Sample data for the graph
@@ -52,9 +53,9 @@ def dataView(request):
 
                 if data is not None:
                     # Create some example plots
-                    bar_graph = px.histogram(data, x=data.columns[0], y=data.columns[1], title="Bar Plot")
+                    bar_graph = px.histogram(data, x=data.columns[0], y=data.columns[0], title="Bar Plot")
                     bar_plot_div = pio.to_html(bar_graph, full_html=False)
-                    pie_chart = px.pie(data, names=data.columns[0], values=data.columns[1], title="Pie Chart")
+                    pie_chart = px.pie(data, names=data.columns[0], values=data.columns[0], title="Pie Chart")
                     pie_plot_div = pio.to_html(pie_chart, full_html=False)
 
                     plot_div = f"{bar_plot_div}<br><br>{pie_plot_div}"
@@ -69,6 +70,7 @@ def dataView(request):
     }
 
     return render(request, 'main/upload.html', context)
+
 
 
 def sendEmails(request):
@@ -88,32 +90,35 @@ def sendEmails(request):
             return render(request, 'main/email_error.html', {'error': 'Unsupported file format.'})
 
         # Check for required columns
-        if 'Emails' not in data.columns or len(data.columns) < 2:
-            return render(request, 'main/email_error.html', {'error': 'File must contain "Emails" and a voting code column.'})
+        if len(data.columns) < 1:
+            return render(request, 'main/email_error.html', {'error': 'File must contain at least one column with email addresses.'})
 
-        # Retrieve email addresses and corresponding voting codes
-        email_addresses = data['Emails'].dropna().unique()
-        voting_codes = data.iloc[:, 1]  # Assuming the next column after 'Emails' contains the voting codes
+        # Retrieve email addresses
+        email_addresses = data.iloc[:, 0].dropna().unique()  # First column assumed to contain email addresses
 
-        # Send each email with its corresponding voting code
-        subject = "Your Voting Code"
+        # Email content
+        subject = "Mock Election Notification"
         from_email = settings.DEFAULT_FROM_EMAIL
 
-        for email, voting_code in zip(email_addresses, voting_codes):
-            # Render the HTML email template with context
+        for email in email_addresses:
+            # Render the HTML email template
             html_content = render_to_string('main/email_content.html', {
-                'email': email,
-                'voting_code': voting_code
+                'email': email
             })
+
             # Create the email message
             email_message = EmailMultiAlternatives(subject, '', from_email, [email])
             email_message.attach_alternative(html_content, "text/html")
-            
+
             try:
                 email_message.send()
                 emails_sent.append(email)
+                print(f"Email sent to {email}")  # Optional log for monitoring
             except Exception as e:
                 print(f'Error sending email to {email}: {e}')  # Log error for debugging
+
+            # Wait for 4 seconds before sending the next email
+            time.sleep(4)
 
     except Exception as e:
         return render(request, 'main/email_error.html', {'error': f'Error processing file: {e}'})

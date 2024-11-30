@@ -1,68 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-        }
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-        }
-        .header h1 {
-            color: #007bff;
-        }
-        .content {
-            margin: 20px 0;
-        }
-        .button {
-            display: block;
-            width: fit-content;
-            margin: 20px auto;
-            padding: 10px 20px;
-            color: #fff;
-            background-color: #007bff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #777;
-        }
-    </style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400&display=swap" em-class="em-font-Mulish-Regular">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400&display=swap" em-class="em-font-Mulish-Regular">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,500&display=swap" em-class="em-font-Mulish-Medium">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,700&display=swap" em-class="em-font-Mulish-Bold">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,800&display=swap" em-class="em-font-Mulish-ExtraBold">
+	<title>NACOS MOCK ELECTION</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300&display=swap" em-class="em-font-Inter-Light">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300&display=swap" em-class="em-font-Inter-Light">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400&display=swap" em-class="em-font-Inter-Regular">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,700&display=swap" em-class="em-font-Inter-Bold">
+	<style type="text/css">
+		html {
+			-webkit-text-size-adjust: none;
+			-ms-text-size-adjust: none;
+		}
+	</style>
+	<style em="styles">
+td[class*=em-mob-width],td[style*=padding] {
+    box-sizing: border-box;
+}
+.em-font-Inter-Regular,.em-font-Mulish-Regular {
+    font-weight: 400!important;
+}
+.em-font-Inter-Regular {
+    font-family: Inter,sans-serif!important;
+}
+@media only screen and (max-device-width:640px),only screen and (max-width:640px) {
+    .em-narrow-table {
+        width: 100%!important;
+        max-width: 640px!important;
+        min-width: 320px!important;
+    }
+    .em-mob-wrap.em-mob-wrap-cancel,.noresp-em-mob-wrap.em-mob-wrap-cancel {
+        display: table-cell!important;
+    }
+    .em-mob-width-100perc {
+        min-width: 100%!important;
+        width: 100%!important;
+        max-width: 100%!important;
+    }
+    .em-mob-wrap {
+        display: block!important;
+    }
+    .em-mob-padding_right-0 {
+        padding-right: 0!important;
+    }
+    .em-mob-padding_left-0 {
+        padding-left: 0!important;
+    }
+    .em-mob-width-auto {
+        width: auto!important;
+    }
+    .em-mob-padding_top-20 {
+        padding-top: 20px!important;
+    }
+    .em-mob-padding_right-20 {
+        padding-right: 20px!important;
+    }
+    .em-mob-padding_left-20 {
+        padding-left: 20px!important;
+    }
+}
+@media only screen and (max-device-width:660px),only screen and (max-width:660px) {
+    .em-mob-width-100perc {
+        width: 100%!important;
+        max-width: 100%!important;
+    }
+}
+</style>
+	<!--[if gte mso 9]>
+	<xml>
+		<o:OfficeDocumentSettings>
+		<o:AllowPNG></o:AllowPNG>
+		<o:PixelsPerInch>96</o:PixelsPerInch>
+		</o:OfficeDocumentSettings>
+	</xml>
+	<![endif]-->
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>NUASA Voting</h1>
-        </div>
-        <div class="content">
-            <p>Hello {{ email }},</p>
-            <p>Here is your unique code for voting: <strong>{{ voting_code }}</strong>.</p>
-            <p>Please use this code in the form to verify your identity.</p>
-            <h3>Voting Details:</h3>
-            <p>The voting period will be open from <strong>8:00 AM</strong> to <strong>12:00 PM</strong>. You have a total of 4 hours to cast your vote. Please ensure you complete your voting within this time frame.</p>
-            <p><strong>Important:</strong> Please do not share this verification code with anyone. It is unique to you and can only be used once for verification.</p>
-            <a href="#" class="button">Click here to vote</a>
-        </div>
-        <div class="footer">
-            <p>Thank you for participating!</p>
-            <p>Best wishes, NUASA</p>
-        </div>
-    </div>
+<body style="margin: 0; padding: 0; background-color: #F8F8F8;">
+	<span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: #F8F8F8; height: 0; width: 0; font-size: 1px;">It's time to make your vote count!&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌</span>
+	<!--[if !mso]><!-->
+	<div style="font-size:0px;color:transparent;opacity:0;">
+		⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	</div>
+	<!--<![endif]-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size: 1px; line-height: normal;" bgcolor="#F8F8F8">
+		<tr em="group">
+			<td align="center">
+				<!--[if (gte mso 9)|(IE)]>
+				<table cellpadding="0" cellspacing="0" border="0" width="640"><tr><td>
+				<![endif]-->
+				<table cellpadding="0" cellspacing="0" width="100%" border="0" style="max-width: 640px; min-width: 640px; width: 640px;" class="em-narrow-table">
+					<tr em="block" class="em-structure">
+						<td align="center" style="padding-right: 0px; padding-bottom: 1px; padding-left: 0px;" class="em-mob-padding_right-0 em-mob-padding_left-0">
+							<table align="center" border="0" cellspacing="0" cellpadding="0" class="em-mob-width-100perc">
+								<tr>
+									<td width="640" valign="top" class="em-mob-wrap em-mob-width-100perc">
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td bgcolor="#1D3E70" style="background-color: #1d3e70; background-repeat: repeat;">
+													<img src="https://img.emlmind.com/en/v5/user-files?userId=6931160&resource=himg&disposition=inline&name=6upt7xb9ubqpynnkofbcm4i96988zjbhr61ozbf4grnh6yiif831jzhg4jyqekeru9nwcwkdoq4azqehy518tgnx49grh9xod3o8w318sikobfyu1dxjaykj83emtjffotrmu6fdo6573tmjwiuwg4ymyja" width="640" border="0" alt="" style="display: block; width: 100%; max-width: 640px;">
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr em="block" class="em-structure">
+						<td align="center" style="padding: 30px 40px; background-color: #ffffff; background-repeat: repeat;" class="em-mob-padding_left-20 em-mob-padding_right-20" bgcolor="#FFFFFF">
+							<table border="0" cellspacing="0" cellpadding="0" class="em-mob-width-100perc">
+								<tr>
+									<td width="560" valign="top" class="em-mob-wrap em-mob-width-100perc">
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td style="padding-bottom: 10px;">
+													<div style="font-family: Helvetica, Arial, sans-serif; font-size: 21px; line-height: 28px; color: #1d1d1d;" class="em-font-Inter-Regular">It's time to make your choice known!</div>
+												</td>
+											</tr>
+										</table>
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td style="padding-bottom: 10px;" align="left">
+													<div style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; color: #1d1d1d" class="em-font-Inter-Regular" align="left">Dear Nacosite, kindly click the button below to access the voting site.<br><br>Your username is: Your <strong>matric number</strong><br>Your password is:&nbsp;<strong>102871<br></strong><br>Incase of any issues, reach out to us on Email: nacoselectoral@gmail.com or via<br><a href="https://api.whatsapp.com/send?phone=2348162849096&text=Hello%20Electoral%20commissioner%0AI%20want%20to%20make%20inquiries%20regarding%20Nacos%20Elections%0A" target="_blank" style="color: #1d1d1d; text-decoration:  underline;">WhatsApp</a>&nbsp;.</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr em="block" class="em-structure">
+						<td align="center" style="padding: 30px 40px; background-color: #ffffff; background-repeat: repeat;" class="em-mob-padding_top-20 em-mob-padding_right-20 em-mob-padding_left-20" bgcolor="#FFFFFF">
+							<table border="0" cellspacing="0" cellpadding="0" class="em-mob-width-100perc">
+								<tr>
+									<td width="560" valign="top" class="em-mob-wrap em-mob-width-100perc">
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td style="padding-right: 0px; padding-bottom: 10px; padding-left: 0px;" align="center">
+													<table cellpadding="0" cellspacing="0" border="0" width="200">
+														<tr>
+															<td align="center" valign="middle" height="41" style="background-color: #1d3e70; border-radius: 100px; height: 41px;" bgcolor="#1D3E70">
+																<a style="display: block; height: 41px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px; line-height: 41px; text-decoration: none; white-space: nowrap;" class="em-font-Inter-Regular" href="https://nacos-poll.vercel.app/login" target="_blank">Click to Begin Voting</a>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr em="block" class="em-structure">
+						<td align="center" style="padding: 24px 40px; background-color: #ffffff;" class="em-mob-padding_left-20 em-mob-padding_right-20" bgcolor="#FFFFFF">
+							<table border="0" cellspacing="0" cellpadding="0" class="em-mob-width-100perc">
+								<tr>
+									<td width="560" valign="top" class="em-mob-wrap em-mob-wrap-cancel em-mob-width-auto"></td>
+								</tr>
+							</table>
+							<table border="0" cellspacing="0" cellpadding="0" class="em-mob-width-100perc">
+								<tr>
+									<td width="560" valign="top" class="em-mob-wrap em-mob-width-100perc" align="center">
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td style="padding-bottom: 10px; padding-top: 20px;" align="center">
+													<div class="em-font-Inter-Regular" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #595959;" align="center">© NACOS ELECTORAL COMMITTEE, 2024<br>DEPARTMENT OF COMPUTER SCIENCE</div>
+												</td>
+											</tr>
+										</table>
+										<table cellpadding="0" cellspacing="0" border="0" width="100%" em="atom">
+											<tr>
+												<td style="padding-bottom: 10px; padding-top: 5px;" align="center">
+													<div class="em-font-Inter-Regular" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #595959;" align="center"><a href="#" target="_blank" style="text-decoration: underline; color: #595959;">Unsubscribe</a></div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<!--[if (gte mso 9)|(IE)]>
+				</td></tr></table>
+				<![endif]-->
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
